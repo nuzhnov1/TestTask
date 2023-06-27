@@ -3,6 +3,7 @@ package com.nuzhnov.testtask.data.repository
 import com.nuzhnov.testtask.data.database.entity.CarEntity
 import com.nuzhnov.testtask.data.datasource.CarsLocalDataSource
 import com.nuzhnov.testtask.data.mapper.toCar
+import com.nuzhnov.testtask.data.mapper.toCarEntityField
 import com.nuzhnov.testtask.di.annotations.IoDispatcher
 import com.nuzhnov.testtask.domen.models.SortType
 import com.nuzhnov.testtask.domen.repository.ICarRepository
@@ -17,12 +18,12 @@ internal class CarsRepositoryImpl @Inject constructor(
 ) : ICarRepository {
 
     override fun getCarsFlow(sortType: SortType) = carsLocalDataSource
-        .getCarEntitiesFlow(sortType)
+        .getCarEntitiesFlow(sortField = sortType.toCarEntityField())
         .map { entityList -> entityList.map(CarEntity::toCar) }
         .flowOn(context = coroutineDispatcher)
 
     override fun getCarsByNumberFlow(number: String, sortType: SortType) = carsLocalDataSource
-        .getCarEntitiesByNumber(number, sortType)
+        .getCarEntitiesByNumber(number, sortField = sortType.toCarEntityField())
         .map { entityList -> entityList.map(CarEntity::toCar) }
         .flowOn(context = coroutineDispatcher)
 }
