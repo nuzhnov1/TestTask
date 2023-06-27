@@ -1,8 +1,9 @@
 package com.nuzhnov.testtask.data.mapper
 
 import com.nuzhnov.testtask.data.database.entity.CarEntity
-import com.nuzhnov.testtask.domen.models.Car
-import com.nuzhnov.testtask.domen.models.SortType
+import com.nuzhnov.testtask.domen.model.Car
+import com.nuzhnov.testtask.domen.model.CarSortType
+
 
 internal fun CarEntity.toCar() = Car(
     number = number,
@@ -11,10 +12,10 @@ internal fun CarEntity.toCar() = Car(
     millage = millage
 )
 
-internal fun SortType.toCarEntityField() = when (this) {
-    SortType.NONE           -> null
-    SortType.NUMBER         -> CarEntity.NUMBER_FIELD_NAME
-    SortType.MODEL          -> CarEntity.MODEL_FIELD_NAME
-    SortType.RELEASE_YEAR   -> CarEntity.RELEASE_YEAR_FIELD_NAME
-    SortType.MILLAGE        -> CarEntity.MILLAGE_FIELD_NAME
+internal fun CarSortType.toCarEntityField() = when (this) {
+    CarSortType.NONE           -> null
+    CarSortType.NUMBER         -> CarEntity.NUMBER_FIELD_NAME
+    CarSortType.MODEL          -> CarEntity.MODEL_FIELD_NAME
+    CarSortType.RELEASE_YEAR   -> CarEntity.RELEASE_YEAR_FIELD_NAME
+    CarSortType.MILLAGE        -> CarEntity.MILLAGE_FIELD_NAME
 }

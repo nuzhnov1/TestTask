@@ -5,8 +5,10 @@ import com.nuzhnov.testtask.data.datasource.CarsLocalDataSource
 import com.nuzhnov.testtask.data.mapper.toCar
 import com.nuzhnov.testtask.data.mapper.toCarEntityField
 import com.nuzhnov.testtask.di.annotations.IoDispatcher
-import com.nuzhnov.testtask.domen.models.SortType
-import com.nuzhnov.testtask.domen.repository.ICarRepository
+import com.nuzhnov.testtask.domen.model.CarSortType
+import com.nuzhnov.testtask.domen.model.SortOrder
+import com.nuzhnov.testtask.domen.model.SortOrder.DESC
+import com.nuzhnov.testtask.domen.repository.CarRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
@@ -15,15 +17,28 @@ import javax.inject.Inject
 internal class CarsRepositoryImpl @Inject constructor(
     private val carsLocalDataSource: CarsLocalDataSource,
     @IoDispatcher private val coroutineDispatcher: CoroutineDispatcher
-) : ICarRepository {
+) : CarRepository {
 
-    override fun getCarsFlow(sortType: SortType) = carsLocalDataSource
+    override fun getCarsFlow(
+        sortType: CarSortType,
+        sortOrder: SortOrder
+    ) = carsLocalDataSource
         .getCarEntitiesFlow(sortField = sortType.toCarEntityField())
-        .map { entityList -> entityList.map(CarEntity::toCar) }
+        .map { entityList -> entityList.map(CarEntity::toCar).sortByOrder(sortOrder) }
         .flowOn(context = coroutineDispatcher)
 
-    override fun getCarsByNumberFlow(number: String, sortType: SortType) = carsLocalDataSource
+    override fun getCarsByNumberFlow(
+        number: String,
+        sortType: CarSortType,
+        sortOrder: SortOrder
+    ) = carsLocalDataSource
         .getCarEntitiesByNumber(number, sortField = sortType.toCarEntityField())
-        .map { entityList -> entityList.map(CarEntity::toCar) }
+        .map { entityList -> entityList.map(CarEntity::toCar).sortByOrder(sortOrder) }
         .flowOn(context = coroutineDispatcher)
+
+    private fun <T> List<T>.sortByOrder(order: SortOrder) = if (order == DESC) {
+        reversed()
+    } else {
+        this
+    }
 }
