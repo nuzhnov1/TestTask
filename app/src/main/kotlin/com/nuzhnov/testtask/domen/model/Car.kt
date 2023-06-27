@@ -1,4 +1,4 @@
-package com.nuzhnov.testtask.domen.models
+package com.nuzhnov.testtask.domen.model
 
 data class Car(
     val number: String,
