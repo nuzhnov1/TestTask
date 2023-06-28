@@ -2,9 +2,9 @@ package com.nuzhnov.testtask.data.repository
 
 import com.nuzhnov.testtask.data.database.entity.CarEntity
 import com.nuzhnov.testtask.data.datasource.CarsLocalDataSource
-import com.nuzhnov.testtask.data.mapper.toCar
-import com.nuzhnov.testtask.data.mapper.toCarEntityField
-import com.nuzhnov.testtask.di.annotations.IoDispatcher
+import com.nuzhnov.testtask.data.mapper.toEntityFieldName
+import com.nuzhnov.testtask.data.mapper.toModel
+import com.nuzhnov.testtask.di.annotation.IoDispatcher
 import com.nuzhnov.testtask.domen.model.CarSortType
 import com.nuzhnov.testtask.domen.model.SortOrder
 import com.nuzhnov.testtask.domen.model.SortOrder.DESC
@@ -23,8 +23,8 @@ internal class CarsRepositoryImpl @Inject constructor(
         sortType: CarSortType,
         sortOrder: SortOrder
     ) = carsLocalDataSource
-        .getCarEntitiesFlow(sortField = sortType.toCarEntityField())
-        .map { entityList -> entityList.map(CarEntity::toCar).sortByOrder(sortOrder) }
+        .getCarEntitiesFlow(sortField = sortType.toEntityFieldName())
+        .map { entityList -> entityList.map(CarEntity::toModel).sortByOrder(sortOrder) }
         .flowOn(context = coroutineDispatcher)
 
     override fun getCarsByNumberFlow(
@@ -32,8 +32,8 @@ internal class CarsRepositoryImpl @Inject constructor(
         sortType: CarSortType,
         sortOrder: SortOrder
     ) = carsLocalDataSource
-        .getCarEntitiesByNumber(number, sortField = sortType.toCarEntityField())
-        .map { entityList -> entityList.map(CarEntity::toCar).sortByOrder(sortOrder) }
+        .getCarEntitiesByNumber(number, sortField = sortType.toEntityFieldName())
+        .map { entityList -> entityList.map(CarEntity::toModel).sortByOrder(sortOrder) }
         .flowOn(context = coroutineDispatcher)
 
     private fun <T> List<T>.sortByOrder(order: SortOrder) = if (order == DESC) {

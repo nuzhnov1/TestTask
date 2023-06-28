@@ -1,11 +1,11 @@
 package com.nuzhnov.testtask.di
 
-import android.content.Context
-import androidx.room.Room
 import com.nuzhnov.testtask.data.database.AppDatabase
-import com.nuzhnov.testtask.di.annotations.IoDispatcher
+import com.nuzhnov.testtask.di.annotation.IoDispatcher
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
+import android.content.Context
+import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,6 +20,7 @@ internal object ProviderModule {
     @[Provides Singleton]
     fun provideAppDatabase(@ApplicationContext context: Context) = Room
         .databaseBuilder(context, AppDatabase::class.java, name = AppDatabase.NAME)
+        .createFromAsset("database/prepopulated-data.db")
         .fallbackToDestructiveMigration()
         .build()
 
