@@ -5,4 +5,9 @@
     <string name="number_title">Registration number</string>
     <string name="release_year_label">Release year:</string>
     <string name="millage_label">Millage:</string>
+
+    <!-- Card list fragment strings -->
+    <string name="search_button">Search</string>
+    <string name="sort_type_button">Sort type</string>
+    <string name="sort_order_button">Sort order</string>
 </resources>
