@@ -2,8 +2,8 @@ package com.nuzhnov.testtask.data.repository
 
 import com.nuzhnov.testtask.data.database.entity.CarEntity
 import com.nuzhnov.testtask.data.datasource.CarsLocalDataSource
-import com.nuzhnov.testtask.data.mapper.toModel
 import com.nuzhnov.testtask.data.mapper.toEntityFieldName
+import com.nuzhnov.testtask.data.mapper.toModel
 import com.nuzhnov.testtask.di.annotation.IoDispatcher
 import com.nuzhnov.testtask.domen.model.CarSortType
 import com.nuzhnov.testtask.domen.model.SortOrder
