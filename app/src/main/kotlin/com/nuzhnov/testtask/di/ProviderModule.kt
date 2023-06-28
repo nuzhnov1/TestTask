@@ -20,6 +20,7 @@ internal object ProviderModule {
     @[Provides Singleton]
     fun provideAppDatabase(@ApplicationContext context: Context) = Room
         .databaseBuilder(context, AppDatabase::class.java, name = AppDatabase.NAME)
+        .createFromAsset("database/prepopulated-data.db")
         .fallbackToDestructiveMigration()
         .build()
 

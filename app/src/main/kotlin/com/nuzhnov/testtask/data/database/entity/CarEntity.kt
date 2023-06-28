@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = CarEntity.TABLE_NAME)
 internal data class CarEntity(
-    @[PrimaryKey(autoGenerate = true) ColumnInfo(name = NUMBER_FIELD_NAME)] val number: String,
+    @[PrimaryKey ColumnInfo(name = NUMBER_FIELD_NAME)] val number: String,
     @ColumnInfo(name = MODEL_FIELD_NAME, index = true) val model: String,
     @ColumnInfo(name = RELEASE_YEAR_FIELD_NAME, index = true) val releaseYear: Int,
     @ColumnInfo(name = MILLAGE_FIELD_NAME, index = true) val millage: Int
