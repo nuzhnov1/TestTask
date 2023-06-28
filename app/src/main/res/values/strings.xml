@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TestTask</string>
+
+    <!-- Card strings -->
+    <string name="number_title">Registration number</string>
+    <string name="release_year_label">Release year:</string>
+    <string name="millage_label">Millage:</string>
 </resources>

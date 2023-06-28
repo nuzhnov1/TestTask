@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/card_margin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/default_padding"
+        android:paddingBottom="@dimen/default_padding">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center_vertical"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            android:textStyle="bold"
+            android:textIsSelectable="true"
+            android:selectAllOnFocus="true"
+            tools:text="Toyota Camry 3.5" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/topDivider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_inner_margin"
+            app:layout_constraintTop_toBottomOf="@id/model"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/numberTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_inner_margin"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
+            app:layout_constraintTop_toTopOf="@id/topDivider"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="@string/number_title" />
+
+        <include
+            android:id="@+id/number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_inner_margin"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
+            app:layout_constraintTop_toBottomOf="@id/numberTitle"
+            layout="@layout/number_layout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/releaseYearLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding"
+            app:layout_constraintBaseline_toBaselineOf="@id/releaseYear"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textStyle="bold"
+            android:text="@string/release_year_label" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/releaseYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:layout_marginTop="@dimen/default_inner_margin"
+            android:layout_marginStart="@dimen/label_end_margin"
+            app:layout_constraintTop_toBottomOf="@id/number"
+            app:layout_constraintStart_toEndOf="@id/releaseYearLabel"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textIsSelectable="true"
+            android:selectAllOnFocus="true"
+            tools:text="2021" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/millageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding"
+            app:layout_constraintBaseline_toBaselineOf="@id/millage"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textStyle="bold"
+            android:text="@string/millage_label" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/millage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:layout_marginTop="@dimen/default_inner_margin"
+            android:layout_marginStart="@dimen/label_end_margin"
+            android:layout_marginEnd="@dimen/default_padding"
+            app:layout_constraintTop_toBottomOf="@id/releaseYear"
+            app:layout_constraintStart_toEndOf="@id/millageLabel"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textIsSelectable="true"
+            android:selectAllOnFocus="true"
+            tools:text="1200 milles" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
