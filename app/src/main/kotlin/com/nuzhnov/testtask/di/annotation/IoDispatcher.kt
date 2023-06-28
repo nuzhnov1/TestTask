@@ -1,4 +1,4 @@
-package com.nuzhnov.testtask.di.annotations
+package com.nuzhnov.testtask.di.annotation
 
 import javax.inject.Qualifier
 import kotlin.annotation.AnnotationRetention

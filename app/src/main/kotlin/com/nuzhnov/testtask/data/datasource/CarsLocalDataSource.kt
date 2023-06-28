@@ -7,13 +7,9 @@ internal class CarsLocalDataSource @Inject constructor(
     private val carDao: CarDao
 ) {
 
-    fun getCarEntitiesFlow(sortField: String?) = when (sortField) {
-        null -> carDao.getCarEntitiesFlow()
-        else -> carDao.getSortedCarEntitiesFlow(sortField)
-    }
+    fun getCarEntitiesFlow(sortField: String) =
+        carDao.getSortedCarEntitiesFlow(sortField)
 
-    fun getCarEntitiesByNumber(number: String, sortField: String?) = when (sortField) {
-        null -> carDao.getCarEntitiesByNumberFlow(number)
-        else -> carDao.getSortedCarEntitiesByNumberFlow(number, sortField)
-    }
+    fun getCarEntitiesByNumber(number: String, sortField: String) =
+        carDao.getSortedCarEntitiesByNumberFlow(number, sortField)
 }

@@ -3,7 +3,7 @@ package com.nuzhnov.testtask.di
 import android.content.Context
 import androidx.room.Room
 import com.nuzhnov.testtask.data.database.AppDatabase
-import com.nuzhnov.testtask.di.annotations.IoDispatcher
+import com.nuzhnov.testtask.di.annotation.IoDispatcher
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 import dagger.Module
