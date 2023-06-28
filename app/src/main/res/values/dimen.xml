@@ -3,8 +3,6 @@
     <dimen name="default_padding">8dp</dimen>
     <dimen name="default_inner_margin">8dp</dimen>
     <dimen name="label_end_margin">4dp</dimen>
-    <dimen name="card_margin">8dp</dimen>
-    <dimen name="number_min_width">240dp</dimen>
     <dimen name="number_shape_stroke_width">4dp</dimen>
     <dimen name="number_shape_corner_radius">8dp</dimen>
 </resources>

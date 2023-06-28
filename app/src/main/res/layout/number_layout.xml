@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:layout_margin="@dimen/card_margin"
+    tools:layout_margin="8dp"
     app:strokeWidth="@dimen/number_shape_stroke_width"
     app:strokeColor="?attr/colorPrimary"
     app:cardCornerRadius="@dimen/number_shape_corner_radius">
@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:minWidth="@dimen/number_min_width"
+        android:minWidth="240dp"
         android:paddingStart="@dimen/default_padding"
         android:paddingEnd="@dimen/default_padding"
         android:orientation="horizontal">
