@@ -4,20 +4,8 @@
 
     <item
         android:id="@+id/searchButton"
-        android:title="@string/search_button"
+        android:title="@string/search_button_title"
         android:icon="@drawable/ic_search_24"
         app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
-
-    <item
-        android:id="@+id/sortOrderButton"
-        android:title="@string/sort_order_button"
-        android:icon="@drawable/ic_sort_type_24"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/sortTypeButton"
-        android:title="@string/sort_type_button"
-        android:icon="@drawable/ic_sort_order"
-        app:showAsAction="ifRoom" />
 </menu>

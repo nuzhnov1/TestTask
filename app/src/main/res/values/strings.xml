@@ -7,7 +7,14 @@
     <string name="millage_label">Millage:</string>
 
     <!-- Card list fragment strings -->
-    <string name="search_button">Search</string>
-    <string name="sort_type_button">Sort type</string>
-    <string name="sort_order_button">Sort order</string>
+    <string name="search_button_title">Search</string>
+    <string name="car_sort_type_label">Sort cars by:</string>
+    <string name="car_sort_type_button_description">Type of the sort of cars</string>
+    <string name="car_sort_order_button_description">Sort order of cars</string>
+
+    <!-- Car sort types -->
+    <string name="sortByNumber">Number</string>
+    <string name="sortByModel">Model</string>
+    <string name="sortByReleaseYear">Release year</string>
+    <string name="sortByMillage">Millage</string>
 </resources>

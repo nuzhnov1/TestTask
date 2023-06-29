@@ -71,7 +71,7 @@
             app:layout_constraintBottom_toTopOf="@id/releaseYear"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            layout="@layout/number_layout" />
+            layout="@layout/car_number_layout" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/releaseYearLabel"
