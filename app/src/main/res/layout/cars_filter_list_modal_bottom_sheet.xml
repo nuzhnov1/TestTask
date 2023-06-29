@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/default_padding">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/carSortOrderTextInputLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_inner_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/carSortOrderButton"
+        android:hint="@string/car_sort_type_label"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/carSortOrderTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            app:simpleItems="@array/car_sort_types"
+            app:simpleItemLayout="@layout/car_sort_type_textview"
+            tools:text="@string/sortByNumber" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/carSortOrderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_inner_margin"
+        app:layout_constraintTop_toTopOf="@id/carSortOrderTextInputLayout"
+        app:layout_constraintBottom_toBottomOf="@id/carSortOrderTextInputLayout"
+        app:layout_constraintStart_toEndOf="@id/carSortOrderTextInputLayout"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        tools:icon="@drawable/ic_asc_sort_type_24"
+        tools:contentDescription="@string/car_sort_asc_sort" />
+</androidx.constraintlayout.widget.ConstraintLayout>

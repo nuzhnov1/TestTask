@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:strokeWidth="@dimen/number_shape_stroke_width"
+    app:strokeWidth="@dimen/car_number_shape_stroke_width"
     app:strokeColor="?attr/colorPrimary"
-    app:cardCornerRadius="@dimen/number_shape_corner_radius"
+    app:cardCornerRadius="@dimen/car_number_shape_corner_radius"
     tools:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
         android:paddingEnd="@dimen/default_padding">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/numberAndSeries"
+            android:id="@+id/numberAndSeriesTextView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/default_padding"
@@ -34,24 +34,24 @@
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider"
-            android:layout_width="@dimen/number_shape_stroke_width"
+            android:layout_width="@dimen/car_number_shape_stroke_width"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/default_inner_margin"
             android:layout_marginEnd="@dimen/default_inner_margin"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/numberAndSeries"
-            app:layout_constraintEnd_toStartOf="@id/regionCode"
+            app:layout_constraintStart_toEndOf="@id/numberAndSeriesTextView"
+            app:layout_constraintEnd_toStartOf="@id/regionCodeTextView"
             app:dividerColor="?attr/colorPrimary" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/regionCode"
+            android:id="@+id/regionCodeTextView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/default_padding"
             android:layout_marginBottom="@dimen/default_inner_margin"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/countryShort"
+            app:layout_constraintBottom_toTopOf="@id/countryShortTextView"
             app:layout_constraintStart_toEndOf="@id/divider"
             app:layout_constraintEnd_toEndOf="parent"
             android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
@@ -59,14 +59,14 @@
             tools:text="77" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/countryShort"
+            android:id="@+id/countryShortTextView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/default_padding"
-            app:layout_constraintTop_toBottomOf="@id/regionCode"
+            app:layout_constraintTop_toBottomOf="@id/regionCodeTextView"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/regionCode"
-            app:layout_constraintEnd_toEndOf="@id/regionCode"
+            app:layout_constraintStart_toStartOf="@id/regionCodeTextView"
+            app:layout_constraintEnd_toEndOf="@id/regionCodeTextView"
             android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
             style="@style/Widget.TestTask.TextView.Uniform.Bold.Selectable"
             tools:text="RUS" />

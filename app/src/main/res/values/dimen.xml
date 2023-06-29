@@ -7,6 +7,6 @@
     <dimen name="label_end_margin">4dp</dimen>
 
     <!-- Number shape dimensions -->
-    <dimen name="number_shape_stroke_width">4dp</dimen>
-    <dimen name="number_shape_corner_radius">8dp</dimen>
+    <dimen name="car_number_shape_stroke_width">4dp</dimen>
+    <dimen name="car_number_shape_corner_radius">8dp</dimen>
 </resources>

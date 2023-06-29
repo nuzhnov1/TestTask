@@ -17,58 +17,57 @@
         android:paddingBottom="@dimen/default_padding">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/model"
+            android:id="@+id/modelTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/topDivider"
+            app:layout_constraintBottom_toTopOf="@id/divider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
+            android:gravity="center_vertical"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             style="@style/Widget.TestTask.TextView.Uniform.Bold.Selectable"
             tools:text="Toyota Camry 3.5" />
 
         <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/topDivider"
+            android:id="@+id/divider"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_inner_margin"
             android:layout_marginBottom="@dimen/default_inner_margin"
-            app:layout_constraintTop_toBottomOf="@id/model"
-            app:layout_constraintBottom_toTopOf="@id/numberTitle"
+            app:layout_constraintTop_toBottomOf="@id/modelTextView"
+            app:layout_constraintBottom_toTopOf="@id/numberTitleTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/numberTitle"
+            android:id="@+id/numberTitleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:minHeight="24dp"
             android:layout_marginBottom="@dimen/default_inner_margin"
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
-            app:layout_constraintTop_toTopOf="@id/topDivider"
-            app:layout_constraintBottom_toTopOf="@id/number"
+            app:layout_constraintTop_toTopOf="@id/divider"
+            app:layout_constraintBottom_toTopOf="@id/numberView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-            android:text="@string/number_title"
+            android:text="@string/car_number_title"
             style="@style/Widget.TestTask.TextView.Uniform.Bold" />
 
         <include
-            android:id="@+id/number"
+            android:id="@+id/numberView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/default_inner_margin"
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
-            app:layout_constraintTop_toBottomOf="@id/numberTitle"
-            app:layout_constraintBottom_toTopOf="@id/releaseYear"
+            app:layout_constraintTop_toBottomOf="@id/numberTitleTextView"
+            app:layout_constraintBottom_toTopOf="@id/releaseYearTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             layout="@layout/car_number_layout" />
@@ -78,23 +77,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_padding"
-            app:layout_constraintBaseline_toBaselineOf="@id/releaseYear"
+            app:layout_constraintBaseline_toBaselineOf="@id/releaseYearTextView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/releaseYear"
+            app:layout_constraintEnd_toStartOf="@id/releaseYearTextView"
             android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
             android:textStyle="bold"
-            android:text="@string/release_year_label" />
+            android:text="@string/car_release_year_label" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/releaseYear"
+            android:id="@+id/releaseYearTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/default_inner_margin"
             android:layout_marginStart="@dimen/label_end_margin"
-            app:layout_constraintTop_toBottomOf="@id/number"
-            app:layout_constraintBottom_toTopOf="@id/millage"
+            app:layout_constraintTop_toBottomOf="@id/numberView"
+            app:layout_constraintBottom_toTopOf="@id/millageTextView"
             app:layout_constraintStart_toEndOf="@id/releaseYearLabel"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             style="@style/Widget.TestTask.TextView.Selectable"
             tools:text="2021" />
 
@@ -103,24 +102,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_padding"
-            app:layout_constraintBaseline_toBaselineOf="@id/millage"
+            app:layout_constraintBaseline_toBaselineOf="@id/millageTextView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/millage"
+            app:layout_constraintEnd_toStartOf="@id/millageTextView"
             app:layout_constraintHorizontal_chainStyle="packed"
             android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
             android:textStyle="bold"
-            android:text="@string/millage_label" />
+            android:text="@string/car_millage_label" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/millage"
+            android:id="@+id/millageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/label_end_margin"
             android:layout_marginEnd="@dimen/default_padding"
-            app:layout_constraintTop_toBottomOf="@id/releaseYear"
+            app:layout_constraintTop_toBottomOf="@id/releaseYearTextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/millageLabel"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             style="@style/Widget.TestTask.TextView.Selectable"
             tools:text="1200 milles" />
     </androidx.constraintlayout.widget.ConstraintLayout>

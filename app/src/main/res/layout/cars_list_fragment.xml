@@ -17,48 +17,6 @@
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/card_list_fragment_menu"
             app:title="@string/app_name" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/default_padding">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/carSortTypeLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBaseline_toBaselineOf="@id/carSortTypeButton"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/carSortTypeButton"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                android:text="@string/car_sort_type_label" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/carSortTypeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_inner_margin"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/carSortTypeLabel"
-                android:contentDescription="@string/car_sort_type_button_description"
-                app:icon="@drawable/ic_arrow_drop_down_24"
-                app:iconGravity="end"
-                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
-                tools:text="@string/sortByNumber" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/carSortOrderButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_inner_margin"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/carSortTypeButton"
-                android:contentDescription="@string/car_sort_order_button_description"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-                tools:icon="@drawable/ic_asc_sort_type_24" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
