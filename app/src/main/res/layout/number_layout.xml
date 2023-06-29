@@ -5,81 +5,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:layout_margin="8dp"
     app:strokeWidth="@dimen/number_shape_stroke_width"
     app:strokeColor="?attr/colorPrimary"
-    app:cardCornerRadius="@dimen/number_shape_corner_radius">
+    app:cardCornerRadius="@dimen/number_shape_corner_radius"
+    tools:layout_margin="8dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:minWidth="240dp"
+        android:minWidth="132dp"
+        android:minHeight="120dp"
         android:paddingStart="@dimen/default_padding"
-        android:paddingEnd="@dimen/default_padding"
-        android:orientation="horizontal">
+        android:paddingEnd="@dimen/default_padding">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/numberAndSeries"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/default_padding"
             android:layout_marginBottom="@dimen/default_padding"
-            android:gravity="center"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
-            app:autoSizeTextType="uniform"
-            android:lines="1"
-            android:textIsSelectable="true"
-            android:selectAllOnFocus="true"
-            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/divider"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            style="@style/Widget.TestTask.TextView.Uniform.Bold.Selectable"
             tools:text="A000AA" />
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider"
             android:layout_width="@dimen/number_shape_stroke_width"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginStart="@dimen/default_inner_margin"
             android:layout_marginEnd="@dimen/default_inner_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/numberAndSeries"
+            app:layout_constraintEnd_toStartOf="@id/regionCode"
             app:dividerColor="?attr/colorPrimary" />
 
-        <LinearLayout
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/regionCode"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginBottom="@dimen/default_inner_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/countryShort"
+            app:layout_constraintStart_toEndOf="@id/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            style="@style/Widget.TestTask.TextView.Uniform.Bold.Selectable"
+            tools:text="77" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/countryShort"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="@dimen/default_padding"
-            android:orientation="vertical">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/regionCode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                app:autoSizeTextType="uniform"
-                android:lines="1"
-                android:textIsSelectable="true"
-                android:selectAllOnFocus="true"
-                android:textStyle="bold"
-                tools:text="77" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/countryShort"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:gravity="center_horizontal|bottom"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                android:lines="1"
-                android:textIsSelectable="true"
-                android:selectAllOnFocus="true"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                tools:text="RUS" />
-        </LinearLayout>
-    </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/regionCode"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/regionCode"
+            app:layout_constraintEnd_toEndOf="@id/regionCode"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            style="@style/Widget.TestTask.TextView.Uniform.Bold.Selectable"
+            tools:text="RUS" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

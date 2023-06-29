@@ -4,4 +4,34 @@
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
     </style>
+
+    <style name="Widget.TestTask.TextView" parent="Widget.MaterialComponents.TextView" />
+
+    <style name="Widget.TestTask.TextView.Selectable">
+        <item name="android:gravity">center</item>
+        <item name="android:minWidth">@dimen/min_width</item>
+        <item name="android:minHeight">@dimen/min_height</item>
+        <item name="android:textIsSelectable">true</item>
+        <item name="android:selectAllOnFocus">true</item>
+    </style>
+
+    <style name="Widget.TestTask.TextView.Uniform" parent="Widget.MaterialComponents.TextView">
+        <item name="android:gravity">center</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <style name="Widget.TestTask.TextView.Uniform.Bold">
+        <item name="android:gravity">center</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:lines">1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.TestTask.TextView.Uniform.Bold.Selectable">
+        <item name="android:minWidth">@dimen/min_width</item>
+        <item name="android:minHeight">@dimen/min_height</item>
+        <item name="android:textIsSelectable">true</item>
+        <item name="android:selectAllOnFocus">true</item>
+    </style>
 </resources>
