@@ -4,8 +4,6 @@
     <string name="car_number_title">Номер регистрации</string>
     <string name="car_release_year_label">Год выпуска:</string>
     <string name="car_millage_label">Пробег (км.):</string>
-    <string name="search_button_title">Поиск</string>
-    <string name="filter_button_title">Отфильтровать список</string>
     <string name="search_car_by_number_hint">Номер машины</string>
     <string name="car_sort_type_label">Тип сортировки авто</string>
     <string name="car_sort_asc_sort">Сортировка по возрастанию</string>
@@ -14,4 +12,5 @@
     <string name="sort_by_model">Модель</string>
     <string name="sort_by_release_year">Год выпуска</string>
     <string name="sort_by_millage">Пробег</string>
+    <string name="search_car_by_number_description">Поиск машины по номеру</string>
 </resources>

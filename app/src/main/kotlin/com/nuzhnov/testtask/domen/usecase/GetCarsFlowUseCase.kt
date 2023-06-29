@@ -8,6 +8,6 @@ import javax.inject.Inject
 class GetCarsFlowUseCase @Inject internal constructor(
     private val repository: CarRepository
 ) {
-    operator fun invoke(sortType: CarSortType, sortOrder: SortOrder) =
-        repository.getCarsFlow(sortType, sortOrder)
+    operator fun invoke(number: String, sortType: CarSortType, sortOrder: SortOrder) =
+        repository.getCarsFlow(number, sortType, sortOrder)
 }

@@ -16,19 +16,17 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
-import androidx.core.view.MenuProvider
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.search.SearchView
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
 
 @[AndroidEntryPoint WithFragmentBindings]
-class CarsListFragment : Fragment(), MenuProvider {
+class CarsListFragment : Fragment() {
 
     private var _binding: CarsListFragmentBinding? = null
     private val binding get() = _binding!!
@@ -54,11 +52,6 @@ class CarsListFragment : Fragment(), MenuProvider {
         val activity = requireActivity()
 
         binding.carsList.adapter = CarAdapter(context = activity)
-        binding.toolbar.addMenuProvider(
-            /* provider = */ this,
-            /* owner = */ viewLifecycleOwner,
-            /* state = */ Lifecycle.State.STARTED
-        )
 
         createObservers()
         createListeners()
@@ -68,13 +61,6 @@ class CarsListFragment : Fragment(), MenuProvider {
         super.onDestroyView()
         _binding = null
     }
-
-    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.card_list_fragment_menu, menu)
-        createMenuItemsListeners(menu)
-    }
-
-    override fun onMenuItemSelected(menuItem: MenuItem) = true
 
     private fun createObservers() {
         carsViewModel.carsListFlow
@@ -103,15 +89,9 @@ class CarsListFragment : Fragment(), MenuProvider {
     }
 
     private fun createListeners() {
+        binding.carNumber.doOnTextChanged(::onNumberTextChanged)
         binding.carSortTypeMenu.setOnItemClickListener(::onCarSortTypeTextViewClick)
         binding.carSortOrderButton.setOnClickListener(::onCarSortOrderButtonClick)
-    }
-
-    private fun createMenuItemsListeners(menu: Menu) {
-        val searchView = menu.findItem(R.id.search_button).actionView as SearchView
-
-        searchView.addTransitionListener(::onSearchViewTransition)
-        searchView.editText.doOnTextChanged(::onSearchViewTextChanged)
     }
 
     private fun onCarsListUpdated(carsList: List<CarUiModel>) {
@@ -174,21 +154,12 @@ class CarsListFragment : Fragment(), MenuProvider {
     }
 
     @Suppress("UNUSED_PARAMETER")
-    private fun onSearchViewTransition(
-        searchView: SearchView,
-        oldState: SearchView.TransitionState,
-        newState: SearchView.TransitionState
-    ) {
-        if (newState == SearchView.TransitionState.SHOWN) {
-            searchView.editText.setText(carsViewModel.carNumberStateFlow.value)
-        }
-    }
-
-    @Suppress("UNUSED_PARAMETER")
-    private fun onSearchViewTextChanged(
+    private fun onNumberTextChanged(
         text: CharSequence?,
         start: Int,
         before: Int,
         count: Int
-    ) = carsViewModel.setCarNumber(carNumber = text?.toString() ?: "")
+    ) {
+        carsViewModel.setCarNumber(carNumber = text?.toString() ?: "")
+    }
 }

@@ -18,19 +18,11 @@ internal class CarsRepositoryImpl @Inject constructor(
 ) : CarRepository {
 
     override fun getCarsFlow(
-        sortType: CarSortType,
-        sortOrder: SortOrder
-    ) = carsLocalDataSource
-        .getCarEntitiesFlow(sortType, sortOrder)
-        .map { entityList -> entityList.map(CarEntity::toModel) }
-        .flowOn(context = coroutineDispatcher)
-
-    override fun getCarsByNumberFlow(
         number: String,
         sortType: CarSortType,
         sortOrder: SortOrder
     ) = carsLocalDataSource
-        .getCarEntitiesByNumber(number, sortType, sortOrder)
+        .getCarEntitiesFlow(number, sortType, sortOrder)
         .map { entityList -> entityList.map(CarEntity::toModel) }
         .flowOn(context = coroutineDispatcher)
 }

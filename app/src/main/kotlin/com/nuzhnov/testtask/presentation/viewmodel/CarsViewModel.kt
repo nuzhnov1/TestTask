@@ -3,7 +3,6 @@ package com.nuzhnov.testtask.presentation.viewmodel
 import com.nuzhnov.testtask.domen.model.Car
 import com.nuzhnov.testtask.domen.model.CarSortType
 import com.nuzhnov.testtask.domen.model.SortOrder
-import com.nuzhnov.testtask.domen.usecase.GetCarsByNumberFlowUseCase
 import com.nuzhnov.testtask.domen.usecase.GetCarsFlowUseCase
 import com.nuzhnov.testtask.presentation.mapper.toUiModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -16,9 +15,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 @HiltViewModel
 internal class CarsViewModel @Inject constructor(
     private val getCarsFlowUseCase: GetCarsFlowUseCase,
-    private val getCarsByNumberFlowUseCase: GetCarsByNumberFlowUseCase,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
+
+    val carNumberStateFlow = savedStateHandle.getStateFlow(
+        key = CAR_NUMBER_KEY,
+        initialValue = EMPTY_CAR_NUMBER
+    )
 
     val carSortTypeStateFlow = savedStateHandle.getStateFlow(
         key = CAR_SORT_TYPE_KEY,
@@ -30,29 +33,24 @@ internal class CarsViewModel @Inject constructor(
         initialValue = DEFAULT_CAR_SORT_ORDER
     )
 
-    val carNumberStateFlow = savedStateHandle.getStateFlow(
-        key = CAR_NUMBER_KEY,
-        initialValue = EMPTY_CAR_NUMBER
-    )
-
     @OptIn(ExperimentalCoroutinesApi::class) val carsListFlow = combine(
+        carNumberStateFlow,
         carSortTypeStateFlow,
-        carSortOrderStateFlow,
-        carNumberStateFlow
-    ) { sortType, sortOrder, number ->
-        CarsRequest(sortType, sortOrder, number)
+        carSortOrderStateFlow
+    ) { number, sortType, sortOrder ->
+        CarsRequest(number, sortType, sortOrder)
     }.transformLatest { request ->
-        val (sortType, sortOrder, number) = request
-
-        val uiModelsFlow = if (number == "") {
-            getCarsFlowUseCase(sortType, sortOrder)
-        } else {
-            getCarsByNumberFlowUseCase(number, sortType, sortOrder)
-        }.map { modelsList -> modelsList.map(Car::toUiModel) }
+        val (number, sortType, sortOrder) = request
+        val uiModelsFlow = getCarsFlowUseCase(number, sortType, sortOrder)
+            .map { modelsList -> modelsList.map(Car::toUiModel) }
 
         emitAll(uiModelsFlow)
     }
 
+
+    fun setCarNumber(carNumber: String) {
+        savedStateHandle[CAR_NUMBER_KEY] = carNumber
+    }
 
     fun setCarSortType(sortType: CarSortType) {
         savedStateHandle[CAR_SORT_TYPE_KEY] = sortType
@@ -62,21 +60,17 @@ internal class CarsViewModel @Inject constructor(
         savedStateHandle[CAR_SORT_ORDER_KEY] = sortOrder
     }
 
-    fun setCarNumber(carNumber: String) {
-        savedStateHandle[CAR_NUMBER_KEY] = carNumber
-    }
-
 
     private data class CarsRequest(
+        val number: String,
         val sortType: CarSortType,
-        val sortOrder: SortOrder,
-        val number: String
+        val sortOrder: SortOrder
     )
 
     private companion object {
+        const val CAR_NUMBER_KEY = "CAR_NUMBER_KEY"
         const val CAR_SORT_TYPE_KEY = "CAR_SORT_TYPE_KEY"
         const val CAR_SORT_ORDER_KEY = "CAR_SORT_ORDER_KEY"
-        const val CAR_NUMBER_KEY = "CAR_NUMBER_KEY"
         const val EMPTY_CAR_NUMBER = ""
 
         val DEFAULT_CAR_SORT_TYPE = CarSortType.NUMBER

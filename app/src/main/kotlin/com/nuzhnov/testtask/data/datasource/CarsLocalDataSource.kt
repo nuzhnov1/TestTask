@@ -12,18 +12,11 @@ internal class CarsLocalDataSource @Inject constructor(
 ) {
 
     fun getCarEntitiesFlow(
-        sortType: CarSortType,
-        sortOrder: SortOrder
-    ) = carDao
-        .getSortedCarEntitiesFlow()
-        .map { entityList -> entityList.sortedBy(sortType, sortOrder) }
-
-    fun getCarEntitiesByNumber(
         number: String,
         sortType: CarSortType,
         sortOrder: SortOrder
     ) = carDao
-        .getSortedCarEntitiesByNumberFlow(number)
+        .getCarEntitiesFlow(numberPattern = "%$number%")
         .map { entityList -> entityList.sortedBy(sortType, sortOrder) }
 
     private fun List<CarEntity>.sortedBy(

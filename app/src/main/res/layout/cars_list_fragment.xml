@@ -9,14 +9,12 @@
     
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:liftOnScroll="true">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            tools:menu="@menu/card_list_fragment_menu"
             app:title="@string/app_name" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,11 +24,32 @@
             tools:context=".presentation.fragment.CarsFilterListFragment">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/car_number_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_inner_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/car_sort_type_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:hint="@string/search_car_by_number_hint"
+                app:startIconDrawable="@drawable/ic_search_24"
+                app:endIconDrawable="@drawable/ic_clear_24"
+                app:endIconMode="clear_text"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/car_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/car_sort_type_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_inner_margin"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/car_number_layout"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/car_sort_order_button"
@@ -60,7 +79,7 @@
                 tools:contentDescription="@string/car_sort_asc_sort" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
-
+    
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cars_list"
         android:layout_width="match_parent"
