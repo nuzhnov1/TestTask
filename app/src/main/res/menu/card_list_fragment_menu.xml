@@ -9,10 +9,4 @@
         app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="com.google.android.material.search.SearchView"
         android:actionLayout="@layout/car_search_by_number_view" />
-
-    <item
-        android:id="@+id/filter_button"
-        android:title="@string/filter_button_title"
-        android:icon="@drawable/ic_filter_list_24"
-        app:showAsAction="ifRoom" />
 </menu>

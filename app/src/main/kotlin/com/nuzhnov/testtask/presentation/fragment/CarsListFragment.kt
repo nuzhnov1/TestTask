@@ -2,6 +2,8 @@ package com.nuzhnov.testtask.presentation.fragment
 
 import com.nuzhnov.testtask.R
 import com.nuzhnov.testtask.databinding.CarsListFragmentBinding
+import com.nuzhnov.testtask.domen.model.CarSortType
+import com.nuzhnov.testtask.domen.model.SortOrder
 import com.nuzhnov.testtask.presentation.adapter.CarAdapter
 import com.nuzhnov.testtask.presentation.model.CarUiModel
 import com.nuzhnov.testtask.presentation.viewmodel.CarsViewModel
@@ -9,6 +11,11 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import android.os.Bundle
 import android.view.*
+import android.widget.AdapterView
+import android.widget.TextView
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -47,13 +54,14 @@ class CarsListFragment : Fragment(), MenuProvider {
         val activity = requireActivity()
 
         binding.carsList.adapter = CarAdapter(context = activity)
-        activity.addMenuProvider(
+        binding.toolbar.addMenuProvider(
             /* provider = */ this,
             /* owner = */ viewLifecycleOwner,
             /* state = */ Lifecycle.State.STARTED
         )
 
         createObservers()
+        createListeners()
     }
 
     override fun onDestroyView() {
@@ -68,15 +76,6 @@ class CarsListFragment : Fragment(), MenuProvider {
 
     override fun onMenuItemSelected(menuItem: MenuItem) = true
 
-    private fun createMenuItemsListeners(menu: Menu) {
-        val searchView = menu.findItem(R.id.search_button) as SearchView
-        val filterButton = menu.findItem(R.id.filter_button)
-
-        searchView.addTransitionListener(::onSearchViewTransition)
-        searchView.editText.doOnTextChanged(::onSearchViewTextChanged)
-        filterButton.setOnMenuItemClickListener(::onFilterMenuItemClick)
-    }
-
     private fun createObservers() {
         carsViewModel.carsListFlow
             .onEach(::onCarsListUpdated)
@@ -85,15 +84,94 @@ class CarsListFragment : Fragment(), MenuProvider {
                 minActiveState = Lifecycle.State.STARTED
             )
             .launchIn(scope = viewLifecycleOwner.lifecycleScope)
+
+        carsViewModel.carSortTypeStateFlow
+            .onEach(::onCarSortTypeUpdated)
+            .flowWithLifecycle(
+                lifecycle = viewLifecycleOwner.lifecycle,
+                minActiveState = Lifecycle.State.STARTED
+            )
+            .launchIn(scope = viewLifecycleOwner.lifecycleScope)
+
+        carsViewModel.carSortOrderStateFlow
+            .onEach(::onCarSortOrderUpdated)
+            .flowWithLifecycle(
+                lifecycle = viewLifecycleOwner.lifecycle,
+                minActiveState = Lifecycle.State.STARTED
+            )
+            .launchIn(scope = viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun createListeners() {
+        binding.carSortTypeMenu.setOnItemClickListener(::onCarSortTypeTextViewClick)
+        binding.carSortOrderButton.setOnClickListener(::onCarSortOrderButtonClick)
+    }
+
+    private fun createMenuItemsListeners(menu: Menu) {
+        val searchView = menu.findItem(R.id.search_button).actionView as SearchView
+
+        searchView.addTransitionListener(::onSearchViewTransition)
+        searchView.editText.doOnTextChanged(::onSearchViewTextChanged)
+    }
+
+    private fun onCarsListUpdated(carsList: List<CarUiModel>) {
+        val adapter = binding.carsList.adapter as CarAdapter
+        adapter.submitList(carsList)
+    }
+
+    private fun onCarSortTypeUpdated(sortType: CarSortType) {
+        @StringRes val sortTypeStringResId = when (sortType) {
+            CarSortType.NUMBER       -> R.string.sort_by_number
+            CarSortType.MODEL        -> R.string.sort_by_model
+            CarSortType.RELEASE_YEAR -> R.string.sort_by_release_year
+            CarSortType.MILLAGE      -> R.string.sort_by_millage
+        }
+
+        binding.carSortTypeMenu.setText(
+            /* text = */ getString(sortTypeStringResId),
+            /* filter = */ false
+        )
+    }
+
+    private fun onCarSortOrderUpdated(sortOrder: SortOrder) {
+        @DrawableRes val sortOrderImageResId = when (sortOrder) {
+            SortOrder.ASC  -> R.drawable.ic_asc_sort_type_24
+            SortOrder.DESC -> R.drawable.ic_desc_sort_type_24
+        }
+
+        binding.carSortOrderButton.icon = ContextCompat.getDrawable(
+            /* context = */ requireContext(),
+            /* id = */ sortOrderImageResId
+        )
     }
 
     @Suppress("UNUSED_PARAMETER")
-    private fun onSearchViewTextChanged(
-        text: CharSequence?,
-        start: Int,
-        before: Int,
-        count: Int
-    ) = carsViewModel.setCarNumber(carNumber = text?.toString() ?: "")
+    private fun onCarSortTypeTextViewClick(
+        parent: AdapterView<*>,
+        view: View,
+        position: Int,
+        id: Long
+    ) {
+        val textView = view as? TextView ?: return
+
+        val sortType = when (textView.text) {
+            getString(R.string.sort_by_number)       -> CarSortType.NUMBER
+            getString(R.string.sort_by_model)        -> CarSortType.MODEL
+            getString(R.string.sort_by_release_year) -> CarSortType.RELEASE_YEAR
+            getString(R.string.sort_by_millage)      -> CarSortType.MILLAGE
+            else                                     -> CarSortType.NUMBER
+        }
+
+        carsViewModel.setCarSortType(sortType)
+    }
+
+    @Suppress("UNUSED_PARAMETER", "UNUSED_VARIABLE")
+    private fun onCarSortOrderButtonClick(view: View) {
+        when (val currentOrder = carsViewModel.carSortOrderStateFlow.value) {
+            SortOrder.ASC  -> carsViewModel.setCarSortOrder(SortOrder.DESC)
+            SortOrder.DESC -> carsViewModel.setCarSortOrder(SortOrder.ASC)
+        }
+    }
 
     @Suppress("UNUSED_PARAMETER")
     private fun onSearchViewTransition(
@@ -107,17 +185,10 @@ class CarsListFragment : Fragment(), MenuProvider {
     }
 
     @Suppress("UNUSED_PARAMETER")
-    private fun onFilterMenuItemClick(menuItem: MenuItem): Boolean {
-        val activity = requireActivity()
-        val modalBottomSheet = CarsFilterListFragment()
-
-        modalBottomSheet.show(activity.supportFragmentManager, CarsFilterListFragment.TAG)
-
-        return true
-    }
-
-    private fun onCarsListUpdated(carsList: List<CarUiModel>) {
-        val adapter = binding.carsList.adapter as CarAdapter
-        adapter.submitList(carsList)
-    }
+    private fun onSearchViewTextChanged(
+        text: CharSequence?,
+        start: Int,
+        before: Int,
+        count: Int
+    ) = carsViewModel.setCarNumber(carNumber = text?.toString() ?: "")
 }

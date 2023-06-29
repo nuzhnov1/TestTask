@@ -6,9 +6,8 @@ import com.nuzhnov.testtask.domen.model.SortOrder
 import com.nuzhnov.testtask.domen.usecase.GetCarsByNumberFlowUseCase
 import com.nuzhnov.testtask.domen.usecase.GetCarsFlowUseCase
 import com.nuzhnov.testtask.presentation.mapper.toUiModel
-import kotlinx.coroutines.flow.combineTransform
-import kotlinx.coroutines.flow.emitAll
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -36,11 +35,15 @@ internal class CarsViewModel @Inject constructor(
         initialValue = EMPTY_CAR_NUMBER
     )
 
-    val carsListFlow = combineTransform(
-        carSortOrderStateFlow,
+    @OptIn(ExperimentalCoroutinesApi::class) val carsListFlow = combine(
         carSortTypeStateFlow,
+        carSortOrderStateFlow,
         carNumberStateFlow
-    ) { sortOrder, sortType, number ->
+    ) { sortType, sortOrder, number ->
+        CarsRequest(sortType, sortOrder, number)
+    }.transformLatest { request ->
+        val (sortType, sortOrder, number) = request
+
         val uiModelsFlow = if (number == "") {
             getCarsFlowUseCase(sortType, sortOrder)
         } else {
@@ -63,6 +66,12 @@ internal class CarsViewModel @Inject constructor(
         savedStateHandle[CAR_NUMBER_KEY] = carNumber
     }
 
+
+    private data class CarsRequest(
+        val sortType: CarSortType,
+        val sortOrder: SortOrder,
+        val number: String
+    )
 
     private companion object {
         const val CAR_SORT_TYPE_KEY = "CAR_SORT_TYPE_KEY"

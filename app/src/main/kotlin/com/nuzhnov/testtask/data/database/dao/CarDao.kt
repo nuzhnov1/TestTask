@@ -9,9 +9,9 @@ import androidx.room.Query
 
 @Dao
 internal interface CarDao {
-    @Query("SELECT * FROM $TABLE_NAME ORDER BY :sortField ASC")
-    fun getSortedCarEntitiesFlow(sortField: String): Flow<List<CarEntity>>
+    @Query("SELECT * FROM $TABLE_NAME")
+    fun getSortedCarEntitiesFlow(): Flow<List<CarEntity>>
 
-    @Query("SELECT * FROM $TABLE_NAME WHERE $NUMBER_FIELD_NAME = :number ORDER BY :sortField ASC")
-    fun getSortedCarEntitiesByNumberFlow(number: String, sortField: String): Flow<List<CarEntity>>
+    @Query("SELECT * FROM $TABLE_NAME WHERE $NUMBER_FIELD_NAME = :number")
+    fun getSortedCarEntitiesByNumberFlow(number: String): Flow<List<CarEntity>>
 }

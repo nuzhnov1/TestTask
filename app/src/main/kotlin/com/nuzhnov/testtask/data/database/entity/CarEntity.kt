@@ -7,9 +7,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = CarEntity.TABLE_NAME)
 internal data class CarEntity(
     @[PrimaryKey ColumnInfo(name = NUMBER_FIELD_NAME)] val number: String,
-    @ColumnInfo(name = MODEL_FIELD_NAME, index = true) val model: String,
-    @ColumnInfo(name = RELEASE_YEAR_FIELD_NAME, index = true) val releaseYear: Int,
-    @ColumnInfo(name = MILLAGE_FIELD_NAME, index = true) val millage: Int
+    @ColumnInfo(name = MODEL_FIELD_NAME) val model: String,
+    @ColumnInfo(name = RELEASE_YEAR_FIELD_NAME) val releaseYear: Int,
+    @ColumnInfo(name = MILLAGE_FIELD_NAME) val millage: Int
 ) {
 
     companion object {
