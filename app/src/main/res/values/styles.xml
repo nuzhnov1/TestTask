@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Widget.TestTask.BottomSheet.Modal" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="behavior_saveFlags">all</item>
+    </style>
+
+    <style name="ThemeOverlay.TestTask.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.TestTask.BottomSheet.Modal</item>
+    </style>
+
     <style name="Widget.TestTask.CardView.Outlined" parent="Widget.Material3.CardView.Outlined">
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>

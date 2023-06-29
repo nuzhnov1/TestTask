@@ -5,38 +5,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/default_padding">
+    android:padding="@dimen/default_padding"
+    tools:context=".presentation.fragment.CarsFilterListFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/carSortOrderTextInputLayout"
+        android:id="@+id/car_sort_type_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_inner_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/carSortOrderButton"
+        app:layout_constraintEnd_toStartOf="@id/car_sort_order_button"
         android:hint="@string/car_sort_type_label"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
-            android:id="@+id/carSortOrderTextView"
+            android:id="@+id/car_sort_type_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="none"
             app:simpleItems="@array/car_sort_types"
-            app:simpleItemLayout="@layout/car_sort_type_textview"
-            tools:text="@string/sortByNumber" />
+            app:simpleItemLayout="@layout/car_sort_type_text_view"
+            tools:text="@string/sort_by_number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/carSortOrderButton"
+        android:id="@+id/car_sort_order_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_inner_margin"
-        app:layout_constraintTop_toTopOf="@id/carSortOrderTextInputLayout"
-        app:layout_constraintBottom_toBottomOf="@id/carSortOrderTextInputLayout"
-        app:layout_constraintStart_toEndOf="@id/carSortOrderTextInputLayout"
+        app:layout_constraintTop_toTopOf="@id/car_sort_type_layout"
+        app:layout_constraintBottom_toBottomOf="@id/car_sort_type_layout"
+        app:layout_constraintStart_toEndOf="@id/car_sort_type_layout"
         style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
         tools:icon="@drawable/ic_asc_sort_type_24"
         tools:contentDescription="@string/car_sort_asc_sort" />

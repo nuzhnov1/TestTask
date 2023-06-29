@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/searchButton"
+        android:id="@+id/search_button"
         android:title="@string/search_button_title"
         android:icon="@drawable/ic_search_24"
         app:showAsAction="collapseActionView|ifRoom"
-        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+        app:actionViewClass="com.google.android.material.search.SearchView"
+        android:actionLayout="@layout/car_search_by_number_view" />
 
     <item
-        android:id="@+id/filterButton"
+        android:id="@+id/filter_button"
         android:title="@string/filter_button_title"
         android:icon="@drawable/ic_filter_list_24"
         app:showAsAction="ifRoom" />

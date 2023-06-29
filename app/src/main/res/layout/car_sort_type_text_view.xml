@@ -8,4 +8,4 @@
     android:gravity="center"
     android:lines="1"
     android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-    tools:text="@string/sortByNumber" />
+    tools:text="@string/sort_by_number" />

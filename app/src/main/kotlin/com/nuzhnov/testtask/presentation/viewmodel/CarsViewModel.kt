@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @HiltViewModel
-internal class CarViewModel @Inject constructor(
+internal class CarsViewModel @Inject constructor(
     private val getCarsFlowUseCase: GetCarsFlowUseCase,
     private val getCarsByNumberFlowUseCase: GetCarsByNumberFlowUseCase,
     private val savedStateHandle: SavedStateHandle
@@ -36,7 +36,7 @@ internal class CarViewModel @Inject constructor(
         initialValue = EMPTY_CAR_NUMBER
     )
 
-    val cardsFlow = combineTransform(
+    val carsListFlow = combineTransform(
         carSortOrderStateFlow,
         carSortTypeStateFlow,
         carNumberStateFlow
