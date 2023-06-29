@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TestTask</string>
+    <string name="car_number_title">Номер регистрации</string>
+    <string name="car_release_year_label">Год выпуска:</string>
+    <string name="car_millage_label">Пробег (км.):</string>
+    <string name="search_button_title">Поиск</string>
+    <string name="filter_button_title">Отфильтровать список</string>
+    <string name="car_sort_type_label">Тип сортировки авто</string>
+    <string name="car_sort_asc_sort">Сортировка по возрастанию</string>
+    <string name="car_sort_desc_sort">Сортировка по убыванию</string>
+    <string name="sortByNumber">Номер</string>
+    <string name="sortByModel">Модель</string>
+    <string name="sortByReleaseYear">Год выпуска</string>
+    <string name="sortByMillage">Пробег</string>
+</resources>

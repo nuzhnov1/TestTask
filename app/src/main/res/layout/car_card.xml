@@ -121,6 +121,6 @@
             app:layout_constraintStart_toEndOf="@id/millageLabel"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             style="@style/Widget.TestTask.TextView.Selectable"
-            tools:text="1200 milles" />
+            tools:text="1200" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
