@@ -1,16 +1,18 @@
 package com.nuzhnov.testtask.presentation.viewmodel
 
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
 import com.nuzhnov.testtask.domen.model.Car
 import com.nuzhnov.testtask.domen.model.CarSortType
 import com.nuzhnov.testtask.domen.model.SortOrder
 import com.nuzhnov.testtask.domen.usecase.GetCarsByNumberFlowUseCase
 import com.nuzhnov.testtask.domen.usecase.GetCarsFlowUseCase
 import com.nuzhnov.testtask.presentation.mapper.toUiModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.combineTransform
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 @HiltViewModel
 internal class CarViewModel @Inject constructor(

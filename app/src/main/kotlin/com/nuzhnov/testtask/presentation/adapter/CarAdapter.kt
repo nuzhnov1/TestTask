@@ -1,5 +1,8 @@
 package com.nuzhnov.testtask.presentation.adapter
 
+import com.nuzhnov.testtask.databinding.CarCardBinding
+import com.nuzhnov.testtask.presentation.adapter.CarAdapter.CarViewHolder
+import com.nuzhnov.testtask.presentation.model.CarUiModel
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,9 +10,6 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.nuzhnov.testtask.databinding.CarCardBinding
-import com.nuzhnov.testtask.presentation.adapter.CarAdapter.CarViewHolder
-import com.nuzhnov.testtask.presentation.model.CarUiModel
 
 internal class CarAdapter(private val context: Context) :
     ListAdapter<CarUiModel, CarViewHolder>(CarDiffUtil.asyncDiffer) {
