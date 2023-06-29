@@ -87,11 +87,11 @@ class CarsFilterListFragment : BottomSheetDialogFragment() {
         id: Long
     ) {
         val sortType = when (id.toInt()) {
-            R.string.sort_by_number          -> CarSortType.NUMBER
-            R.string.sort_by_model           -> CarSortType.MODEL
-            R.string.sort_by_release_year    -> CarSortType.RELEASE_YEAR
-            R.string.sort_by_millage         -> CarSortType.MILLAGE
-            else                             -> CarSortType.NUMBER
+            R.string.sort_by_number       -> CarSortType.NUMBER
+            R.string.sort_by_model        -> CarSortType.MODEL
+            R.string.sort_by_release_year -> CarSortType.RELEASE_YEAR
+            R.string.sort_by_millage      -> CarSortType.MILLAGE
+            else                          -> CarSortType.NUMBER
         }
 
         carsViewModel.setCarSortType(sortType)
@@ -100,17 +100,17 @@ class CarsFilterListFragment : BottomSheetDialogFragment() {
     @Suppress("UNUSED_PARAMETER", "UNUSED_VARIABLE")
     private fun onCarSortOrderButtonClick(view: View) {
         when (val currentOrder = carsViewModel.carSortOrderStateFlow.value) {
-            SortOrder.ASC   -> carsViewModel.setCarSortOrder(SortOrder.DESC)
-            SortOrder.DESC  -> carsViewModel.setCarSortOrder(SortOrder.ASC)
+            SortOrder.ASC  -> carsViewModel.setCarSortOrder(SortOrder.DESC)
+            SortOrder.DESC -> carsViewModel.setCarSortOrder(SortOrder.ASC)
         }
     }
 
     private fun onCarSortTypeUpdated(sortType: CarSortType) {
         @StringRes val sortTypeStringResId = when (sortType) {
-            CarSortType.NUMBER          -> R.string.sort_by_number
-            CarSortType.MODEL           -> R.string.sort_by_model
-            CarSortType.RELEASE_YEAR    -> R.string.sort_by_release_year
-            CarSortType.MILLAGE         -> R.string.sort_by_millage
+            CarSortType.NUMBER       -> R.string.sort_by_number
+            CarSortType.MODEL        -> R.string.sort_by_model
+            CarSortType.RELEASE_YEAR -> R.string.sort_by_release_year
+            CarSortType.MILLAGE      -> R.string.sort_by_millage
         }
 
         binding.carSortTypeMenu.setText(
@@ -121,8 +121,8 @@ class CarsFilterListFragment : BottomSheetDialogFragment() {
 
     private fun onCarSortOrderUpdated(sortOrder: SortOrder) {
         @DrawableRes val sortOrderImageResId = when (sortOrder) {
-            SortOrder.ASC   -> R.drawable.ic_asc_sort_type_24
-            SortOrder.DESC  -> R.drawable.ic_desc_sort_type_24
+            SortOrder.ASC  -> R.drawable.ic_asc_sort_type_24
+            SortOrder.DESC -> R.drawable.ic_desc_sort_type_24
         }
 
         binding.carSortOrderButton.icon = ContextCompat.getDrawable(
