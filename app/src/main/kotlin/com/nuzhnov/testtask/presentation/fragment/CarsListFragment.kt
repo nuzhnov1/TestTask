@@ -4,7 +4,7 @@ import com.nuzhnov.testtask.R
 import com.nuzhnov.testtask.databinding.CarsListFragmentBinding
 import com.nuzhnov.testtask.domen.model.CarSortType
 import com.nuzhnov.testtask.domen.model.SortOrder
-import com.nuzhnov.testtask.presentation.adapter.CarAdapter
+import com.nuzhnov.testtask.presentation.adapter.CarCardAdapter
 import com.nuzhnov.testtask.presentation.model.CarUiModel
 import com.nuzhnov.testtask.presentation.viewmodel.CarsViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -51,7 +51,8 @@ class CarsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val activity = requireActivity()
 
-        binding.carsList.adapter = CarAdapter(context = activity)
+        binding.carNumber.setText(/* text = */ carsViewModel.carNumberStateFlow.value)
+        binding.carCardsList.adapter = CarCardAdapter(context = activity)
 
         createObservers()
         createListeners()
@@ -95,7 +96,7 @@ class CarsListFragment : Fragment() {
     }
 
     private fun onCarsListUpdated(carsList: List<CarUiModel>) {
-        val adapter = binding.carsList.adapter as CarAdapter
+        val adapter = binding.carCardsList.adapter as CarCardAdapter
         adapter.submitList(carsList)
     }
 

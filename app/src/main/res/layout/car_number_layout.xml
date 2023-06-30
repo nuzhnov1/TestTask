@@ -8,6 +8,7 @@
     app:strokeWidth="@dimen/car_number_shape_stroke_width"
     app:strokeColor="?attr/colorPrimary"
     app:cardCornerRadius="@dimen/car_number_shape_corner_radius"
+    tools:layout_width="match_parent"
     tools:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
