@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.TestTask.BottomSheet.Modal" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="behavior_saveFlags">all</item>
+    </style>
+
+    <style name="ThemeOverlay.TestTask.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.TestTask.BottomSheet.Modal</item>
+    </style>
+
+    <style name="Widget.TestTask.CardView.Outlined" parent="Widget.Material3.CardView.Outlined">
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="Widget.TestTask.TextView" parent="Widget.MaterialComponents.TextView" />
+
+    <style name="Widget.TestTask.TextView.Selectable">
+        <item name="android:gravity">center</item>
+        <item name="android:minWidth">@dimen/min_width</item>
+        <item name="android:minHeight">@dimen/min_height</item>
+        <item name="android:textIsSelectable">true</item>
+        <item name="android:selectAllOnFocus">true</item>
+    </style>
+
+    <style name="Widget.TestTask.TextView.Uniform" parent="Widget.MaterialComponents.TextView">
+        <item name="android:gravity">center</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <style name="Widget.TestTask.TextView.Uniform.Bold">
+        <item name="android:gravity">center</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:lines">1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.TestTask.TextView.Uniform.Bold.Selectable">
+        <item name="android:minWidth">@dimen/min_width</item>
+        <item name="android:minHeight">@dimen/min_height</item>
+        <item name="android:textIsSelectable">true</item>
+        <item name="android:selectAllOnFocus">true</item>
+    </style>
+</resources>

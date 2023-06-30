@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">TestTask</string>
+
+    <!-- Car card strings -->
+    <string name="car_number_title">Registration number</string>
+    <string name="car_release_year_label">Release year:</string>
+    <string name="car_millage_label">Millage:</string>
+
+    <!-- Cars list fragment strings -->
+    <string name="search_car_by_number_hint">Number of car</string>
+    <string name="search_car_by_number_description">Search car by the number</string>
+
+    <!-- Cars filter list modal bottom sheet -->
+    <string name="car_sort_type_label">Sort cars type</string>
+    <string name="car_sort_asc_sort">Ascending sort</string>
+    <string name="car_sort_desc_sort">Descending sort</string>
+
+    <!-- Car sort types -->
+    <string name="sort_by_number">Number</string>
+    <string name="sort_by_model">Model</string>
+    <string name="sort_by_release_year">Release year</string>
+    <string name="sort_by_millage">Millage</string>
+
+    <string-array name="car_sort_types">
+        <item>@string/sort_by_number</item>
+        <item>@string/sort_by_model</item>
+        <item>@string/sort_by_release_year</item>
+        <item>@string/sort_by_millage</item>
+    </string-array>
 </resources>
