@@ -48,6 +48,12 @@ internal class CarsViewModel @Inject constructor(
     }
 
 
+    suspend fun getCarsList() = getCarsFlowUseCase(
+        number = carNumberStateFlow.value,
+        sortType = carSortTypeStateFlow.value,
+        sortOrder = carSortOrderStateFlow.value
+    ).first().map(Car::toUiModel)
+
     fun setCarNumber(carNumber: String) {
         savedStateHandle[CAR_NUMBER_KEY] = carNumber
     }
