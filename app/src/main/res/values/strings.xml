@@ -3,6 +3,7 @@
 
     <!-- Car card strings -->
     <string name="car_number_title">Registration number</string>
+    <string name="car_number_label">Registration number:</string>
     <string name="car_release_year_label">Release year:</string>
     <string name="car_millage_label">Millage:</string>
 

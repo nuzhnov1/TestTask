@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    style="Widget.TestTask.CardView.Outlined">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/default_padding"
+        android:paddingBottom="@dimen/default_padding">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/model"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            android:gravity="center_vertical"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            style="@style/Widget.TestTask.TextView.Uniform.Bold"
+            tools:text="Toyota Camry 3.5" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_inner_margin"
+            android:layout_marginBottom="@dimen/default_inner_margin"
+            app:layout_constraintTop_toBottomOf="@id/model"
+            app:layout_constraintBottom_toTopOf="@id/number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/number_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="24dp"
+            android:layout_marginBottom="@dimen/default_inner_margin"
+            android:layout_marginStart="@dimen/default_padding"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBaseline_toBaselineOf="@id/number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/number"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:text="@string/car_number_label"
+            style="@style/Widget.TestTask.TextView.Uniform.Bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_inner_margin"
+            android:layout_marginStart="@dimen/label_end_margin"
+            android:layout_marginEnd="@dimen/default_padding"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintBottom_toTopOf="@id/release_year"
+            app:layout_constraintStart_toEndOf="@id/number_label"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            style="@style/Widget.TestTask.TextView"
+            tools:text="AA00AA-77-RUS" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/release_year_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBaseline_toBaselineOf="@id/release_year"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/release_year"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textStyle="bold"
+            android:text="@string/car_release_year_label" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/release_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_inner_margin"
+            android:layout_marginStart="@dimen/label_end_margin"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintTop_toBottomOf="@id/number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/release_year_label"
+            app:layout_constraintEnd_toStartOf="@id/millage_label"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            style="@style/Widget.TestTask.TextView"
+            tools:text="2021" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/millage_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_inner_margin"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBaseline_toBaselineOf="@id/millage"
+            app:layout_constraintStart_toEndOf="@id/release_year"
+            app:layout_constraintEnd_toStartOf="@id/millage"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textStyle="bold"
+            android:text="@string/car_millage_label" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/millage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/label_end_margin"
+            android:layout_marginEnd="@dimen/default_padding"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintTop_toBottomOf="@id/number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/millage_label"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            style="@style/Widget.TestTask.TextView"
+            tools:text="1200" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

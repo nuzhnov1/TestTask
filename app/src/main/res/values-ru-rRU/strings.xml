@@ -13,4 +13,5 @@
     <string name="sort_by_release_year">Год выпуска</string>
     <string name="sort_by_millage">Пробег</string>
     <string name="search_car_by_number_description">Поиск машины по номеру</string>
+    <string name="car_number_label">Номер регистрации:</string>
 </resources>
